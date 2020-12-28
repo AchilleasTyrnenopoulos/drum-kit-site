@@ -1,3 +1,4 @@
+// Detect button press
 //number of drum buttons
 var numberOfBtns = document.querySelectorAll(".drum").length;
 
@@ -9,7 +10,19 @@ for (var i=0; i<numberOfBtns; i++)
         //check which btn/img was clicked
         var btnInnerHtml = this.innerHTML;
         
-        switch (btnInnerHtml)
+        makeSound(btnInnerHtml);
+        btnAnimation(btnInnerHtml);
+    });
+}
+
+//detecting keyboard press
+document.addEventListener("keypress", function (event){
+    makeSound(event.key);
+    btnAnimation(event.key);
+});
+
+function makeSound (key) {
+    switch (key)
         {
             case "k":
                 var kick = new Audio("sounds/kick-bass.mp3");
@@ -51,11 +64,9 @@ for (var i=0; i<numberOfBtns; i++)
                 break;          
         }
 
-
-        // //what to do when clicked
-        // var audio = new Audio("sounds/tom-1.mp3");
-        // audio.play();
-    });
 }
 
+function btnAnimation (currentKey) {
+    var activeBtn = document.querySelector("." + currentKey);
 
+}
