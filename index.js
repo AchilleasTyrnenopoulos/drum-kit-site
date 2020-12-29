@@ -15,7 +15,7 @@ for (var i=0; i<numberOfBtns; i++)
     });
 }
 
-//detecting keyboard press
+//detecting keyboard press (check whick key from keyboard was pressed)
 document.addEventListener("keypress", function (event){
     makeSound(event.key);
     btnAnimation(event.key);
@@ -68,5 +68,10 @@ function makeSound (key) {
 
 function btnAnimation (currentKey) {
     var activeBtn = document.querySelector("." + currentKey);
+    activeBtn.classList.add("pressed");
 
+    //remove class after 1 second
+    setTimeout(function() {
+        activeBtn.classList.remove("pressed");
+    }, 100);
 }
